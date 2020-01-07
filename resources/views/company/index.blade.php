@@ -1,4 +1,4 @@
-@extends('company.layouts')
+@extends('layouts')
 
 @section('content')
     <div class="mt-5">
@@ -24,7 +24,7 @@
                     @foreach ($companies as $item)
                         <tr class="row text-center m-0">
                         <td class="col-2 pt-2">
-                            <img  src="{{asset('storage/company/'.$item->logo)}}" style="width: 50px; height:50px">
+                            <img  src="{{asset('storage/'.$item->logo)}}" style="width: 50px; height:50px">
                         </td>
                         <td class="col-2 pt-2">{{ $item->name }}</td>
                             <td class="col-3 pt-2">{{ $item->email }}</td>
@@ -68,6 +68,18 @@
             </div>
             @endif
         </div>
+        @if($companies->total() > $companies->count())
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            {{ $companies->links() }}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
 @endsection
 

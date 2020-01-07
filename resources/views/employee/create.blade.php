@@ -1,4 +1,4 @@
-@extends('company.layouts')
+@extends('layouts')
 
 @section('content')
     <div class="text-center">
@@ -46,13 +46,23 @@
             <div class="form-group row">
                 <label for="email" class="col-4 col-form-label text-right"><b>Email :</b></label>
                 <div class="col-6">
-                    <input id="email" type="email" class="form-control" name="email" value="" >
+                    <input id="email" type="email" class="form-control" name="email" value="">
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
             </div>
             <div class="form-group row">
                 <label for="phone" class="col-4 col-form-label text-right"><b>Phone :</b></label>
                 <div class="col-6">
-                    <input id="phone" type="text" class="form-control" name="phone" value=""  >
+                    <input id="phone" type="text" class="form-control" name="phone" value="">
+                    @error('phone')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
             </div>
 

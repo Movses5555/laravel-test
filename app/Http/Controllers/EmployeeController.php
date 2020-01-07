@@ -14,7 +14,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::all();
+        $employees = Employee::paginate(10);
+        //dd($employees);
         return view('employee.index', compact('employees'));
     }
 
@@ -34,17 +35,19 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
-    {
+    {   //dd($request);
         $request->validate([
             'firstname' =>  'required',
             'lastname' =>  'required',
             'company' =>  'required',
             'email' =>  'required',
-            'phone' =>  'required|digits_between:2,10'
+            'phone' =>  'required|min:6|max:20'
         ]);
         $employee = $request->all();
         Employee::create($employee);
+
         return redirect()->back();
     }
 

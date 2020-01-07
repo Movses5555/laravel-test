@@ -25,7 +25,24 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
-
+    <style>
+        .links > a {
+            color: white;
+            padding: 0 25px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        .menu {
+            width: 100%;
+            height: 30px;
+            margin-top: 20px;
+            background-color:grey ;
+            color: white;
+        }
+    </style>
 
 </head>
 <body style="min-width: 550px; max-width: 100%">

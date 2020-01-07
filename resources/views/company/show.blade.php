@@ -1,4 +1,4 @@
-@extends('company.layouts')
+@extends('layouts')
 
 @section('content')
     <div class="text-center">

@@ -1,4 +1,4 @@
-@extends('company.layouts')
+@extends('layouts')
 
 @section('content')
     <div class="mt-5">
@@ -12,7 +12,7 @@
             </form>
         </div>
         <div>
-            @if(count($employees) >> 0)
+            @if(count($employees) > 0)
                 <table class="mt-5 col-12 table " >
                     <tr class="row text-center m-0">
                         <th class="col-2">First Name</th>
@@ -69,6 +69,18 @@
                 </div>
             @endif
         </div>
+        @if($employees->total() > $employees->count())
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            {{ $employees->links() }}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
 @endsection
 

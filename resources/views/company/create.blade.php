@@ -1,13 +1,8 @@
-@extends('company.layouts')
+@extends('layouts')
 
 @section('content')
     <div class="text-center">
         <h1 class="m-5">Create Company</h1>
-
-
-
-
-
         <div class="row mb-2">
             <div class="col-12 text-right ">
                 <a href="{{route('company.index')}}" class="btn bg-primary"> Back </a>
