@@ -15,7 +15,6 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = Employee::paginate(10);
-        //dd($employees);
         return view('employee.index', compact('employees'));
     }
 
@@ -37,7 +36,7 @@ class EmployeeController extends Controller
      */
 
     public function store(Request $request)
-    {   //dd($request);
+    {
         $request->validate([
             'firstname' =>  'required',
             'lastname' =>  'required',
@@ -86,15 +85,6 @@ class EmployeeController extends Controller
     {
         $employee_info = $request->all();
         $employee = Employee::find($id);
-
-        // if(!in_array("logo", $employee_info)){
-        //     $company_info['logo'] = $employee['logo'];
-        // }else {
-        //     $logo = $request->file('logo');
-        //     $logoName = time().$logo->getClientOriginalName();
-        //     Storage::disk('public/employee')->put($logoName, File::get($logo));
-        //     $employee_info['logo'] = $logoName;
-        // }
         $employee->update($employee_info);
 
         return redirect('employee');

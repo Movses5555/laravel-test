@@ -19,7 +19,6 @@ Route::get('/login', 'AdminController@index')->name('login');
 
 Route::post('/login', 'AdminController@login');
 
-Route::get('/login/dashbord', 'AdminController@dashbord');
 
 Route::resource('company','CompanyController');
 Route::resource('employee','EmployeeController');

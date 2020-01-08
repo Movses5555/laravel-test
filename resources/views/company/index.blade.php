@@ -1,7 +1,8 @@
 @extends('layouts')
 
 @section('content')
-    <div class="mt-5">
+    <div class="mt-0">
+        @include('auth.dashboard')
         <h1 class="text-center"><b>Companies</b></h1>
         <div class="mb-4 text-right">
             <form method="GET" action="{{route('company.create')}}" class="float-right mr-3">

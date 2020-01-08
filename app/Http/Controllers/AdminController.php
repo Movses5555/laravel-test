@@ -19,15 +19,8 @@ class AdminController extends Controller
         $user = User::all();
 
         if (Hash::check($admin['password'], $user[0]['password']) && $user[0]['email'] === $admin['email']) {
-            return redirect('login/dashbord');
+            return redirect('company');
         }
-
-        return view('auth/login');
+        return redirect('login');
     }
-
-    public function dashbord()
-    {
-        return view('auth/dashbord');
-    }
-
 }
