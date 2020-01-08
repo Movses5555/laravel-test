@@ -46,7 +46,6 @@ class CompanyController extends Controller
         $logo = $request->file('logo');
         $logoName = time().$logo->getClientOriginalName();
         Storage::disk('public')->put($logoName, File::get($logo));
-
         $company = $request->all();
         $company['logo'] = $logoName;
         Company::create($company);
@@ -89,9 +88,9 @@ class CompanyController extends Controller
         $company_info = $request->all();
         $company = Company::find($id);
 
-        if(!in_array("logo", $company_info)){
+        if (!in_array("logo", $company_info)) {
             $company_info['logo'] = $company['logo'];
-        }else {
+        } else {
             $logo = $request->file('logo');
             $logoName = time().$logo->getClientOriginalName();
             Storage::disk('public/company')->put($logoName, File::get($logo));
