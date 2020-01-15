@@ -6,7 +6,7 @@
         <div class="row mb-2">
             <div class="col-12 text-right">
                 <div class="col-12 text-right">
-                    <a href="{{route('employee.index')}}" class="btn bg-primary"> Back </a>
+                    <a href="{{route('employees.index')}}" class="btn bg-primary"> Back </a>
                 </div>
             </div>
         </div>

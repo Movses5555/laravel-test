@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
+use Auth;
 use Illuminate\Http\Request;
-use App\Company;
+use App\Models\Company;
+use App\Http\Requests\CompanyRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
@@ -18,7 +19,7 @@ class CompanyController extends Controller
     public function index()
     {
         $companies = Company::paginate(10);
-        return view('company.index', compact('companies'));
+        return view('companies.index', compact('companies'));
     }
 
     /**
@@ -28,7 +29,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        return view('company.create');
+        return view('companies.create');
     }
 
     /**
@@ -37,12 +38,8 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CompanyRequest $request)
     {
-        $request->validate([
-            'name' =>  'required',
-            'logo' =>  'required|file|dimensions:min_width=100,min_height=100',
-        ]);
         $logo = $request->file('logo');
         $logoName = time().$logo->getClientOriginalName();
         Storage::disk('public')->put($logoName, File::get($logo));
@@ -61,7 +58,7 @@ class CompanyController extends Controller
     public function show($id)
     {
         $company = Company::find($id);
-        return view('company.show' , compact('company'));
+        return view('companies.show' , compact('company'));
     }
 
     /**
@@ -72,8 +69,8 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        $editComp = Company::find($id);
-        return view('company.edit', compact('editComp'));
+        $company = Company::find($id);
+        return view('companies.edit', compact('company'));
     }
 
     /**
@@ -85,20 +82,19 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $company_info = $request->all();
+        $companyInfo = $request->all();
         $company = Company::find($id);
-
-        if (!in_array("logo", $company_info)) {
-            $company_info['logo'] = $company['logo'];
+        if (!isset($companyInfo['logo'])) {
+            $companyInfo['logo'] = $company['logo'];
         } else {
             $logo = $request->file('logo');
             $logoName = time().$logo->getClientOriginalName();
-            Storage::disk('public/company')->put($logoName, File::get($logo));
-            $company_info['logo'] = $logoName;
+            Storage::disk('public')->put($logoName, File::get($logo));
+            $companyInfo['logo'] = $logoName;
         }
-        $company->update($company_info);
+        $company->update($companyInfo);
 
-        return redirect('company');
+        return redirect('companies');
     }
 
     /**
@@ -109,8 +105,8 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        $del = Company::find($id);
-        $del->delete();
-        return redirect('company');
+        $company = Company::find($id);
+        $company->delete();
+        return redirect('companies');
     }
 }

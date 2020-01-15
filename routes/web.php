@@ -15,12 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', 'AdminController@index')->name('login');
+Route::get('logout', 'Auth\LoginController@logout');
 
-Route::post('/login', 'AdminController@login');
+Auth::routes();
 
-
-Route::resource('company','CompanyController');
-Route::resource('employee','EmployeeController');
+Route::resource('companies','CompanyController');
+Route::resource('employees','EmployeeController');
 
 

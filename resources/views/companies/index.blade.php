@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="mt-0">
-        @include('auth.dashboard')
+        {{-- @include('auth.dashboard') --}}
         <h1 class="text-center"><b>Companies</b></h1>
         <div class="mb-4 text-right">
-            <form method="GET" action="{{route('company.create')}}" class="float-right mr-3">
+            <form method="GET" action="{{route('companies.create')}}" class="float-right mr-3">
                 @csrf
                 <button data-form="" type="submit" class="btn btn-sm bg-primary blog_create">
                     Add
@@ -33,7 +33,7 @@
                             <td class="col-2">
                                 <div class="blogs_btn">
                                     <div class="float-left mr-1" >
-                                        <form method="GET" action="{{route('company.edit', $item->id)}}">
+                                        <form method="GET" action="{{route('companies.edit', $item->id)}}">
                                             @csrf
                                             <button type="submit" class="btn btn-sm  bg-primary">
                                                 <i style='font-size:18px' class='far'>&#xf044;</i>
@@ -41,7 +41,7 @@
                                         </form>
                                     </div>
                                     <div class="float-left mr-1" >
-                                        <form method="GET" action="{{route('company.show', $item->id)}}">
+                                        <form method="GET" action="{{route('companies.show', $item->id)}}">
                                             @csrf
                                             <button type="submit" class="btn btn-sm  bg-primary">
                                                 <i style="font-size:18px" class="fa">&#xf06e;</i>
@@ -49,7 +49,7 @@
                                         </form>
                                     </div>
                                     <div class="float-left mr-1" >
-                                        <form method="POST" action="{{route('company.destroy', $item->id)}}">
+                                        <form method="POST" action="{{route('companies.destroy', $item->id)}}">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm bg-danger">

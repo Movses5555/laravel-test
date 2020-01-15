@@ -5,10 +5,10 @@
         <h1 class="m-5">Create Company</h1>
         <div class="row mb-2 mr-3">
             <div class="col-12 text-right ">
-                <a href="{{route('employee.index')}}" class="btn bg-primary"> Back </a>
+                <a href="{{route('employees.index')}}" class="btn bg-primary"> Back </a>
             </div>
         </div>
-        <form method="POST" action="{{route('employee.store')}}" enctype="multipart/form-data">
+        <form method="POST" action="{{route('employees.store')}}" enctype="multipart/form-data">
             @csrf
             <div class="form-group row">
                 <label for="firstname" class="col-4 col-form-label text-right"><b>First Name :</b></label>

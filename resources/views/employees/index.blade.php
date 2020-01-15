@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="mt-0">
-        @include('auth.dashboard')
+        {{-- @include('auth.dashboard') --}}
         <h1 class="text-center"><b>Employees</b></h1>
         <div class="mb-4 mr-4 text-right">
-            <form method="GET" action="{{route('employee.create')}}" class="float-right mr-3">
+            <form method="GET" action="{{route('employees.create')}}" class="float-right mr-3">
                 @csrf
                 <button data-form="" type="submit" class="btn btn-sm bg-primary blog_create">
                     Add
@@ -34,7 +34,7 @@
                             <td class="col-2 text-center">
                                 <div class="row">
                                     <div class="float-left mr-2 col-3" >
-                                        <form method="GET" action="{{route('employee.edit', $item->id)}}">
+                                        <form method="GET" action="{{route('employees.edit', $item->id)}}">
                                             @csrf
                                             <button type="submit" class="btn btn-sm  bg-primary">
                                                 <i style='font-size:18px' class='far'>&#xf044;</i>
@@ -42,7 +42,7 @@
                                         </form>
                                     </div>
                                     <div class="float-left mr-2 col-3" >
-                                        <form method="GET" action="{{route('employee.show', $item->id)}}">
+                                        <form method="GET" action="{{route('employees.show', $item->id)}}">
                                             @csrf
                                             <button type="submit" class="btn btn-sm  bg-primary">
                                                 <i style="font-size:18px" class="fa">&#xf06e;</i>
@@ -50,7 +50,7 @@
                                         </form>
                                     </div>
                                     <div class="float-left mr-2 col-3" >
-                                        <form method="POST" action="{{route('employee.destroy', $item->id)}}">
+                                        <form method="POST" action="{{route('employees.destroy', $item->id)}}">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm bg-danger">
