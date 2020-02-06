@@ -28,7 +28,7 @@
                     @enderror
                 </div>
             </div>
-            <div class="form-group row">
+            {{-- <div class="form-group row">
                 <label for="company" class="col-4 col-form-label text-right"><b>Company :</b></label>
                 <div class="col-6">
                     <input id="company" type="text" class="form-control @error('company') is-invalid @enderror" name="company"  value="{{$employee->company}}" required>
@@ -38,7 +38,29 @@
                         </span>
                     @enderror
                 </div>
+            </div> --}}
+
+            <div class="form-group row">
+                <label for="company-id" class="col-4 col-form-label text-right"><b>Company :</b></label>
+                <div class="col-6">
+                    <select name="company_id" class="form-control" id="company-id">
+                        @if(!old('company_id') && !isset($employee))
+                            <option disabled selected value hidden>Choose Company</option>
+                        @endif
+                        @foreach($companies as $company)
+                            @if(old('company_id'))
+                                <option value="{{$company->id}}" @if(old('company_id')==$company->id) selected @endif>{{$company->name}}</option>
+                            @elseif(isset($employee))
+                                <option value="{{$company->id}}" @if($employee->company_id==$company->id) selected @endif>{{$company->name}}</option>
+                            @else
+                                <option value="{{$company->id}}">{{$company->name}}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>
             </div>
+
+
             <div class="form-group row">
                 <label for="email" class="col-4 col-form-label text-right"><b>Email :</b></label>
                 <div class="col-6">

@@ -9,7 +9,7 @@ use App\Http\Requests\CompanyRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
-class CompanyController extends Controller
+class CompaniesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -46,7 +46,7 @@ class CompanyController extends Controller
         $company = $request->all();
         $company['logo'] = $logoName;
         Company::create($company);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Company is add');
     }
 
     /**

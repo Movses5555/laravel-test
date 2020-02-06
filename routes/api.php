@@ -13,9 +13,29 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::group([
 
-Route::group(['middleware' => 'api'], function() {
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function ($router) {
+
+    Route::post('login', 'AuthController@login');
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
     Route::post('test', function(){
         dd('All ok');
     });
+});
+
+Route::group([
+
+    'middleware' => ['api', 'jwt.auth'],
+
+], function() {
+
+    Route::apiResource('companies', 'API\CompaniesController');
+    Route::apiResource('employees', 'API\EmployeesController');
+
 });

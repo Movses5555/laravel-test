@@ -19,7 +19,7 @@ Route::get('logout', 'Auth\LoginController@logout');
 
 Auth::routes();
 
-Route::resource('companies','CompanyController');
-Route::resource('employees','EmployeeController');
+Route::resource('companies','CompaniesController');
+Route::resource('employees','EmployeesController');
 
 

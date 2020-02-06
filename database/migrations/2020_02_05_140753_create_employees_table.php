@@ -17,10 +17,14 @@ class CreateEmployeesTable extends Migration
             $table->bigIncrements('id');
             $table->string('firstname');
             $table->string('lastname');
-            $table->string('company');
+            $table->unsignedBigInteger('company_id');
             $table->string('email')->unique();
             $table->string('phone');
             $table->timestamps();
+        });
+
+        Schema::table('employees', function($table) {
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
         });
     }
 

@@ -1,6 +1,7 @@
 @extends('layouts')
 
 @section('content')
+    @include('alerts.errors')
     <div class="text-center">
         <h1 class="m-5">Create Company</h1>
         <div class="row mb-2">

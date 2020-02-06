@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use App\Models\Company;
 use App\Http\Requests\EmployeeRequest;
 
-class EmployeeController extends Controller
+class EmployeesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +17,8 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = Employee::paginate(10);
-        return view('employees.index', compact('employees'));
+        $companies = Company::all();
+        return view('employees.index', compact('employees','companies'));
     }
 
     /**
@@ -26,7 +28,12 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('employees.create');
+        if(request()->session()->has('errors')) {
+            // dd(request()->session());
+        }
+        $companies = Company::all();
+        // dd($companies);
+        return view('employees.create', compact('companies'));
     }
 
     /**
@@ -40,9 +47,11 @@ class EmployeeController extends Controller
     {
 
         $employee = $request->all();
-        Employee::create($employee);
+        //dd($request->all());
+        $employee = Employee::create($employee);
+        //dd($employee);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Employee is add');
     }
 
     /**
@@ -66,7 +75,8 @@ class EmployeeController extends Controller
     public function edit($id)
     {
         $employee = Employee::find($id);
-        return view('employees.edit', compact('employee'));
+        $companies = Company::all();
+        return view('employees.edit', compact('employee','companies'));
     }
 
     /**

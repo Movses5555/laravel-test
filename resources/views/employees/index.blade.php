@@ -28,7 +28,13 @@
 
                             <td class="col-2 pt-2">{{ $item->firstname }}</td>
                             <td class="col-2 pt-2">{{ $item->lastname }}</td>
-                            <td class="col-2 pt-2">{{ $item->company }}</td>
+
+                            @foreach ($companies as $company)
+                                @if($item->company_id === $company->id)
+                                    <td class="col-2 pt-2">{{ $company->name }}</td>
+                                @endif
+                            @endforeach
+
                             <td class="col-2 pt-2">{{ $item->email }}</td>
                             <td class="col-2 pt-2">{{ $item->phone }}</td>
                             <td class="col-2 text-center">
