@@ -20,22 +20,27 @@ Route::group([
 
 ], function ($router) {
 
-    Route::post('login', 'AuthController@login');
-    Route::post('logout', 'AuthController@logout');
-    Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
-    Route::post('test', function(){
-        dd('All ok');
-    });
+    Route::post('login', 'Api\AuthController@login');
+    Route::post('logout', 'Api\AuthController@logout');
+    Route::post('refresh', 'Api\AuthController@refresh');
+    Route::post('me', 'Api\AuthController@me');
 });
 
 Route::group([
-
-    'middleware' => ['api', 'jwt.auth'],
-
+    'middleware' => ['api'],
 ], function() {
+    // Route::resource('employees', 'Api\EmployeesController', [
+    //     'except' => [
+    //         'edit',
+    //         'show',
+    //         'update'
+    //     ]
+    // ]);
+    Route::apiResource('companies', 'Api\CompaniesController');
+    Route::apiResource('employees', 'Api\EmployeesController');
 
-    Route::apiResource('companies', 'API\CompaniesController');
-    Route::apiResource('employees', 'API\EmployeesController');
+    // Route::post('upload', function() {
+    //     dd('5555555');
+    // });
 
 });
