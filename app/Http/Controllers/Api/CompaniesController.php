@@ -20,19 +20,8 @@ class CompaniesController extends Controller
     public function index()
     {
         $companies = Company::paginate(10);
-        // return view('companies.index', compact('companies'));
         return response()->json($companies);
     }
-
-    // /**
-    //  * Show the form for creating a new resource.
-    //  *
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function create()
-    // {
-    //     return view('companies.create');
-    // }
 
     /**
      * Store a newly created resource in storage.
@@ -43,9 +32,7 @@ class CompaniesController extends Controller
     public function store(CompanyRequest $request)
     {
         $company = $request->all();
-
         $create = Company::create($company)->refresh();
-
         return response()->json($create);
     }
 
@@ -71,18 +58,11 @@ class CompaniesController extends Controller
     public function update(CompanyRequest $request, $id)
     {
         $companyInfo = $request->all();
-
         $company = Company::find($id);
-
         if (isset($companyInfo['logo']) && $company['logo'] && $company['logo'] !== $companyInfo['logo']) {
             Storage::delete('public/'.$company->logo);
         }
         $newCompany = $company->update($companyInfo);
-        return response()->json([
-            'request' => $companyInfo,
-            'Module' => $company,
-            'new Company' => $newCompany,
-            ]);
         return response()->json($company);
     }
 
@@ -102,4 +82,3 @@ class CompaniesController extends Controller
         return response()->json('Company deleted succesfully');
     }
 }
-
