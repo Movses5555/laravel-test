@@ -14,15 +14,4 @@ class Company extends Model
     {
         return $this->hasMany('App\Models\Employee');
     }
-
-    // public function company()
-    // {
-    //     $phone = Company::find(1)->company;
-    //     return $this->belongsTo('App\Models\Company');
-    // }
-
-
-
-
-
 }

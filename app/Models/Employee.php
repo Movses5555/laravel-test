@@ -14,6 +14,4 @@ class Employee extends Model
     {
         return $this->belongsTo('App\Models\Company');
     }
-
-
 }

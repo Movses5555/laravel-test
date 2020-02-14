@@ -23,29 +23,16 @@ class CompanyRequest extends FormRequest
      */
     public function rules()
     {
-
-        // $id = null;
-        // if(strtolower($this->method()) === 'put'){
-        // $id = $this->route('company');
-        // }
-        // return [
-        //     'name' => 'required|max:255',
-        //     'email' => "nullable|email|unique:companies,email,$id",
-        //     'logo' => 'file|mimes:jpeg,bmp,png,jpg,gif|dimensions:min_width=100,min_height=100',
-        //     'website' => 'nullable|url'
-        // ];
         if(strtolower($this->method()) === 'put'){
-            $id = $this->route('company');
+            $id = $this->route('companies');
             return [
-                'name' =>  'nullable',
+                'name' => 'nullable',
                 'logo' => 'nullable'
             ];
         }
-
         return [
             'name' =>  'required',
             'logo' => 'required'
-            // 'logo ' =>  'required|file|mimes:jpeg,bmp,png,jpg,gif|dimensions:min_width=100,min_height=100',
         ];
     }
 }

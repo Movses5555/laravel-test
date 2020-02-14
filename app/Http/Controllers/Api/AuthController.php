@@ -31,7 +31,6 @@ class AuthController extends Controller
         if ($token = $this->guard()->attempt($credentials)) {
             return $this->respondWithToken($token);
         }
-
         return response()->json([
             'error' => 'Invalid credentials',
             'status' => 'Loging'

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -35,16 +34,12 @@
             color: white;
         }
     </style>
-
 </head>
 <body style="min-width: 550px; max-width: 100%">
 <div id="app">
     <section class="container-fluid p-0">
-
         @include('auth.dashboard')
-
         @yield('content')
-
     </section>
 </div>
 @yield('javascript')

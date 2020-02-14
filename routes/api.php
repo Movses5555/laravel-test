@@ -14,12 +14,9 @@ use Illuminate\Http\Request;
 */
 
 Route::group([
-
     'middleware' => 'api',
-    'prefix' => 'auth'
-
+    'prefix' => 'auth',
 ], function ($router) {
-
     Route::post('login', 'Api\AuthController@login');
     Route::post('logout', 'Api\AuthController@logout');
     Route::post('refresh', 'Api\AuthController@refresh');
@@ -29,18 +26,6 @@ Route::group([
 Route::group([
     'middleware' => ['api'],
 ], function() {
-    // Route::resource('employees', 'Api\EmployeesController', [
-    //     'except' => [
-    //         'edit',
-    //         'show',
-    //         'update'
-    //     ]
-    // ]);
     Route::apiResource('companies', 'Api\CompaniesController');
     Route::apiResource('employees', 'Api\EmployeesController');
-
-    // Route::post('upload', function() {
-    //     dd('5555555');
-    // });
-
 });

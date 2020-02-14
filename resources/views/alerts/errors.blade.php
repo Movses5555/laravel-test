@@ -34,6 +34,3 @@
         <p>{{ Session::get('notice') }}</p>
     </div>
 @endif
-
-
-

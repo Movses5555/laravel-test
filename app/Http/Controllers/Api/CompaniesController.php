@@ -61,8 +61,6 @@ class CompaniesController extends Controller
         return response()->json($company);
     }
 
-
-
     /**
      * Update the specified resource in storage.
      *
@@ -83,7 +81,7 @@ class CompaniesController extends Controller
         return response()->json([
             'request' => $companyInfo,
             'Module' => $company,
-            'new Company' => $newCompany
+            'new Company' => $newCompany,
             ]);
         return response()->json($company);
     }
@@ -102,8 +100,6 @@ class CompaniesController extends Controller
         }
         $company->delete();
         return response()->json('Company deleted succesfully');
-
-        // return redirect('companies')->back()->with('success', 'Company is deleted');
     }
 }
 

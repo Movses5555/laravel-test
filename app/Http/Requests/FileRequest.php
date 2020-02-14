@@ -23,10 +23,8 @@ class FileRequest extends FormRequest
      */
     public function rules()
     {
-
         return [
-            'logo' => 'required|file',
-            //|dimensions:min_width=100,min_height=100//
+            'logo' => 'required|file|dimensions:min_width=100,min_height=100'
         ];
     }
 }

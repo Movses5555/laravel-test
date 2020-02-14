@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="mt-0">
-        {{-- @include('auth.dashboard') --}}
         <h1 class="text-center"><b>Employees</b></h1>
         <div class="mb-4 mr-4 text-right">
             <form method="GET" action="{{route('employees.create')}}" class="float-right mr-3">
@@ -25,16 +24,13 @@
                     </tr>
                     @foreach ($employees as $item)
                         <tr class="row text-center m-0">
-
                             <td class="col-2 pt-2">{{ $item->firstname }}</td>
                             <td class="col-2 pt-2">{{ $item->lastname }}</td>
-
                             @foreach ($companies as $company)
                                 @if($item->company_id === $company->id)
                                     <td class="col-2 pt-2">{{ $company->name }}</td>
                                 @endif
                             @endforeach
-
                             <td class="col-2 pt-2">{{ $item->email }}</td>
                             <td class="col-2 pt-2">{{ $item->phone }}</td>
                             <td class="col-2 text-center">
@@ -63,7 +59,6 @@
                                                 <i style="font-size:18px;" class="fa">&#xf1f8;</i>
                                             </button>
                                         </form>
-
                                     </div>
                                 </div>
                             </td>
@@ -83,13 +78,9 @@
                         <div class="card-body">
                             {{ $employees->links() }}
                         </div>
-
                     </div>
                 </div>
             </div>
         @endif
     </div>
 @endsection
-
-
-

@@ -19,8 +19,6 @@ class UploadController extends Controller
         $fileName = time().$file->getClientOriginalName();
         $fileSet = Storage::disk('public')->put($fileName, File::get($file));
         $path = storage_path('app/public/'.$fileName);
-
-        //return response()->json('HHHHHHHHHHHHHHHHHHHHH');
         return response()->json(['logo'=> $fileName]);
     }
 

@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="mt-0">
-        {{-- @include('auth.dashboard') --}}
         <h1 class="text-center"><b>Companies</b></h1>
         <div class="mb-4 text-right">
             <form method="GET" action="{{route('companies.create')}}" class="float-right mr-3">
@@ -56,7 +55,6 @@
                                                 <i style="font-size:18px;" class="fa">&#xf1f8;</i>
                                             </button>
                                         </form>
-
                                     </div>
                                 </div>
                             </td>
@@ -76,13 +74,9 @@
                         <div class="card-body">
                             {{ $companies->links() }}
                         </div>
-
                     </div>
                 </div>
             </div>
         @endif
     </div>
 @endsection
-
-
-

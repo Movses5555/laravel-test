@@ -10,20 +10,10 @@
                 </div>
             </div>
         </div>
-        {{-- <div>
-            <img src="{{asset('storage/'.$company->logo)}}"
-                alt="{{$company->logo}}"
-                style="width: 100px; height: 100px"
-                >
-            <h2>{{ $company->name }}</h2>
-            <h3>{{ $company->email }}</h3>
-            <a href="{{$company->website}}">{{ $company->website }}</a>
-        </div> --}}
     </div>
 @endsection
 
-
- @section('javascript')
+@section('javascript')
     <script>
             function back() {
                 window.history.back();

@@ -9,7 +9,13 @@
             <div class="form-group row">
                 <label for="name" class="col-4 col-form-label text-right"><b>Name :</b></label>
                 <div class="col-6">
-                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"  value="{{$company->name}}" required>
+                <input id="name"
+                    type="text"
+                    class="form-control @error('name') is-invalid @enderror"
+                    name="name"
+                    value="{{$company->name}}"
+                    required
+                >
                     @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -20,20 +26,35 @@
             <div class="form-group row">
                 <label for="email" class="col-4 col-form-label text-right"><b>Email :</b></label>
                 <div class="col-6">
-                    <input id="email" type="email" class="form-control" name="email" value="{{$company->email}}" >
+                    <input id="email"
+                        type="email"
+                        class="form-control"
+                        name="email"
+                        value="{{$company->email}}"
+                    >
                 </div>
             </div>
             <div class="form-group row">
                 <label for="website" class="col-4 col-form-label text-right"><b>Website :</b></label>
                 <div class="col-6">
-                    <input id="website" type="text" class="form-control" name="website" value="{{$company->website}}"  >
+                    <input id="website"
+                        type="text"
+                        class="form-control"
+                        name="website"
+                        value="{{$company->website}}"
+                    >
                 </div>
             </div>
             <div class="form-group row">
                 <label for="logo" class="col-4 col-form-label text-right"><b>Logo :</b></label>
                 <div class="col-6">
-                    <input data-preview="#preview" name="logo" type="file" id="logo" class="form-control @error('logo') is-invalid @enderror" >
-                        <img src="{{asset('storage/'.$company->logo)}}"
+                    <input data-preview="#preview"
+                        name="logo"
+                        type="file"
+                        id="logo"
+                        class="form-control @error('logo') is-invalid @enderror"
+                    >
+                    <img src="{{asset('storage/'.$company->logo)}}"
                         alt="{{$company->logo}}"
                         style="width:50px; height:50px"
                     >
@@ -42,7 +63,6 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-
                 </div>
             </div>
             <div class="form-group row mb-0">

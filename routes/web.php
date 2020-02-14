@@ -10,15 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
 Route::post('upload', 'UploadController@upload');
 Route::get('logout', 'Auth\LoginController@logout');
-
 Auth::routes();
-
 Route::resource('companies','Api\CompaniesController');
 Route::resource('employees','Api\EmployeesController');
-

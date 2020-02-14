@@ -23,7 +23,6 @@ class EmployeeRequest extends FormRequest
      */
     public function rules()
     {
-        // dd('hhhh');
         return [
             'firstname' =>  'required',
             'lastname' =>  'required',
