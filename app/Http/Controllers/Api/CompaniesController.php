@@ -19,7 +19,8 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-        $companies = Company::paginate(10);
+
+        $companies = Company::paginate(2);
         return response()->json($companies);
     }
 

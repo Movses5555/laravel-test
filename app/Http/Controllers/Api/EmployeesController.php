@@ -17,7 +17,7 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        $employees = Employee::paginate(10);
+        $employees = Employee::with('company')->paginate(2);
         $companies = Company::all();
         $result = [
             'companies' => $companies,

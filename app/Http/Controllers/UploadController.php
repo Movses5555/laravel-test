@@ -12,7 +12,6 @@ use App\Http\Controllers\Controller;
 
 class UploadController extends Controller
 {
-
     public function upload(FileRequest $request, Company $company)
     {
         $file = $request->file('logo');
@@ -21,5 +20,4 @@ class UploadController extends Controller
         $path = storage_path('app/public/'.$fileName);
         return response()->json(['logo'=> $fileName]);
     }
-
 }
