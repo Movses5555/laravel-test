@@ -23,16 +23,10 @@ class CompanyRequest extends FormRequest
      */
     public function rules()
     {
-        if(strtolower($this->method()) === 'put'){
-            $id = $this->route('companies');
-            return [
-                'name' => 'nullable',
-                'logo' => 'nullable'
-            ];
-        }
         return [
             'name' =>  'required',
             'logo' => 'required'
         ];
     }
 }
+

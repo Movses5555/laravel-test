@@ -10,6 +10,14 @@
                 </div>
             </div>
         </div>
+        <div>
+            <div style="margin: 20px auto">
+               <img src="{{asset('storage/'.$company->logo)}}" alt={{$company->logo}} style='width: 400px; height:300px' >
+            </div>
+            <h2>{{ $company->name }}</h2>
+            <h3>{{ $company->email }}</h3>
+            <h2>{{ $company->website }}</h2>
+        </div>
     </div>
 @endsection
 

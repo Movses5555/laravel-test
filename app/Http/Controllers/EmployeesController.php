@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use App\Models\Employee;
+use App\Models\Company;
 use App\Http\Requests\EmployeeRequest;
-use App\Http\Controllers\Controller;
+use App\Services\CompaniesService;
 use App\Services\EmployeesService;
 
 class EmployeesController extends Controller
@@ -13,12 +16,25 @@ class EmployeesController extends Controller
      *
      * @param App\Services\EmployeesService $employeeService
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\View
      */
     public function index(EmployeesService $employeeService)
     {
         $employees = $employeeService->getAll();
-        return response()->json($employees);
+        return view('employees.index', compact('employees'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param App\Services\EmployeesService $employeeService
+     *
+     * @return \Illuminate\Http\View
+     */
+    public function create(CompaniesService $companyService)
+    {
+        $companies = $companyService->getAll();
+        return view('employees.create', compact('companies'));
     }
 
     /**
@@ -27,7 +43,7 @@ class EmployeesController extends Controller
      * @param  App\Http\Requests\EmployeeRequest  $request
      * @param App\Services\EmployeesService $employeeService
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Redirect
      */
 
     public function store(EmployeeRequest $request, EmployeesService $employeeService)
@@ -36,7 +52,7 @@ class EmployeesController extends Controller
             ->create($request
                 ->only('firstname', 'lastname', 'email', 'phone', 'company_id')
             );
-        return response()->json($employees, 201);
+        return redirect()->back();
     }
 
     /**
@@ -45,12 +61,27 @@ class EmployeesController extends Controller
      * @param  int  $id
      * @param App\Services\EmployeesService $employeeService
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\View
      */
     public function show($id, EmployeesService $employeeService)
     {
+        $employee = Employee::find($id);
+        return view('employees.show' , compact('employee'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @param App\Services\EmployeesService $employeeService
+     *
+     * @return \Illuminate\Http\View
+     */
+    public function edit($id, EmployeesService $employeeService, CompaniesService $companyService )
+    {
         $employee = $employeeService->getById($id);
-        return response()->json($employee);
+        $companies = $companyService->getAll();
+        return view('employees.edit', compact('employee', 'companies'));
     }
 
     /**
@@ -60,7 +91,7 @@ class EmployeesController extends Controller
      * @param  int  $id
      * @param App\Services\EmployeesService $employeeService
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Redirect
      */
     public function update(EmployeeRequest $request, $id, EmployeesService $employeeService)
     {
@@ -68,7 +99,7 @@ class EmployeesController extends Controller
             $request->only('firstname', 'lastname', 'email', 'phone', 'company_id'),
             $id
         );
-        return response()->json($employee);
+        return redirect('employees', compact('employee'));
     }
 
     /**
@@ -77,11 +108,11 @@ class EmployeesController extends Controller
      * @param  int  $id
      * @param App\Services\EmployeesService $employeeService
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Redirect
      */
     public function destroy($id, EmployeesService $employeeService)
     {
         $employee = $employeeService->deleteById($id);
-        return response()->json($employee);
+        return redirect('employees', compact('employee'));
     }
 }

@@ -12,8 +12,8 @@
         </div>
         <div>
             <h2>{{ $employee->firstname }}</h2>
-            <h2>{{ $employee->lasttname }}</h2>
-            <h2>{{ $employee->Company }}</h2>
+            <h2>{{ $employee->lastname }}</h2>
+            <h2>{{ $employee->Company->name }}</h2>
             <h3>{{ $employee->email }}</h3>
             <h2>{{ $employee->phone }}</h2>
         </div>

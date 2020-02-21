@@ -12,6 +12,7 @@
             </form>
         </div>
         <div>
+
             @if(count($employees) > 0)
                 <table class="mt-5 col-12 table " >
                     <tr class="row text-center m-0">
@@ -26,11 +27,9 @@
                         <tr class="row text-center m-0">
                             <td class="col-2 pt-2">{{ $item->firstname }}</td>
                             <td class="col-2 pt-2">{{ $item->lastname }}</td>
-                            @foreach ($companies as $company)
-                                @if($item->company_id === $company->id)
-                                    <td class="col-2 pt-2">{{ $company->name }}</td>
-                                @endif
-                            @endforeach
+
+                                    <td class="col-2 pt-2">{{ $item ->company->name }}</td>
+
                             <td class="col-2 pt-2">{{ $item->email }}</td>
                             <td class="col-2 pt-2">{{ $item->phone }}</td>
                             <td class="col-2 text-center">

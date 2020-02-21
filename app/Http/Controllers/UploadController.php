@@ -3,15 +3,23 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\Http\Requests\FileRequest;
 use Illuminate\Http\Request;
 use App\Models\Company;
-use App\Http\Requests\FileRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
 
 class UploadController extends Controller
 {
+    /**
+     * Store a newly created file in storage.
+     *
+     * @param  App\Http\Requests\FileRequest  $request
+     * @param  App\Models\Company $company
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function upload(FileRequest $request, Company $company)
     {
         $file = $request->file('logo');
@@ -21,3 +29,4 @@ class UploadController extends Controller
         return response()->json(['logo'=> $fileName]);
     }
 }
+

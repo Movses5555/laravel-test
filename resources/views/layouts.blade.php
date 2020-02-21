@@ -38,7 +38,6 @@
 <body style="min-width: 550px; max-width: 100%">
 <div id="app">
     <section class="container-fluid p-0">
-        @include('auth.dashboard')
         @yield('content')
     </section>
 </div>

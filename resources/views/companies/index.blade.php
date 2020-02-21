@@ -24,7 +24,7 @@
                     @foreach ($companies as $item)
                         <tr class="row text-center m-0">
                         <td class="col-2 pt-2">
-                            <img  src="{{asset('storage/'.$item->logo)}}" style="width: 50px; height:50px">
+                            <img  src="{{asset('storage/'.$item->logo)}}" alt={{$item->logo}} style="width: 50px; height:50px">
                         </td>
                         <td class="col-2 pt-2">{{ $item->name }}</td>
                             <td class="col-3 pt-2">{{ $item->email }}</td>
